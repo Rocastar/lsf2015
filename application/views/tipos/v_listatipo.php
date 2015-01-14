@@ -125,7 +125,7 @@ function AllTables(){
 function MakeSelect2(){
 	$('select').select2();
 	$('.dataTables_filter').each(function(){
-		$(this).find('label input[type=text]').attr('placeholder', 'Search');
+		$(this).find('label input[type=text]').attr('placeholder', 'Buscar capullo');
 	});
 }
 $(document).ready(function() {
