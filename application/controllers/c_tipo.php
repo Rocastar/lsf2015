@@ -22,24 +22,22 @@ class C_tipo extends CI_Controller {
     }
     function createtipo(){
         
-        $this->form_validation->set_rules('nombre', 'Ingrese usuario', 'required|trim|min_length[2]|max_length[150]|xss_clean');
+        $this->form_validation->set_rules('nombre', 'Ingrese usuario', 'required|trim|min_length[2]|max_length[150]|xss_clean');             
+        //lanzamos mensajes de error si es que los hay
+        $this->form_validation->set_message('required', 'El %s es requerido');
+        $this->form_validation->set_message('min_length', 'El %s debe tener al menos %s carácteres');
+        $this->form_validation->set_message('max_length', 'El %s debe tener al menos %s carácteres');
+		if($this->form_validation->run() == FALSE)
+		{
+			$this->create();
+		}else{
+            $nombre = $this->input->post('nombre');
+            $descripcion = $this->input->post('descripcion');
+            $this->m_tipo->createTipo($nombre,$descripcion);
+
+            $this->load->view('tipos/v_createtipo');
             
- 
-            //lanzamos mensajes de error si es que los hay
-            $this->form_validation->set_message('required', 'El %s es requerido');
-            $this->form_validation->set_message('min_length', 'El %s debe tener al menos %s carácteres');
-            $this->form_validation->set_message('max_length', 'El %s debe tener al menos %s carácteres');
-			if($this->form_validation->run() == FALSE)
-			{
-				$this->create();
-			}else{
-                                $nombre = $this->input->post('nombre');
-                                $descripcion = $this->input->post('descripcion');
-                                $this->m_tipo->createTipo($nombre,$descripcion);
-        
-                                $this->load->view('tipos/v_createtipo');
-                                
-                        }
+        }
     }
     function lista(){    
         $data['tipos'] = $this->m_tipo->getAllTipos();

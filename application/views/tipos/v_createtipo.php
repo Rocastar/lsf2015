@@ -54,7 +54,7 @@
                         </div>
 			<div class="form-group">			
                             <div class="col-sm-offset-2 col-sm-2">                         		                       
-                                <button type="submit" class="btn btn-primary btn-large">Guargar</button>
+                                <button type="submit" class="btn btn-primary btn-large">Guardar</button>
                             </div>                                               
 			</div>
                                
@@ -77,7 +77,7 @@
                 'descripcion': "required"
             },
             messages: {'nombre': "Por favor ingrese nombre TIPO"},
-                    debug: true,errorElement: "label",
+            debug: true,errorElement: "label",
             submitHandler: function(form){
 		$("#mensaje").show();
 		$("#mensaje").html("<p class='well'><strong>Guardando TIPO.......</strong></p>");
